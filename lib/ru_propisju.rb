@@ -576,6 +576,11 @@ module RuPropisju
 
     parts = []
 
+    # Пример: Ноль рублей 10 копеек
+    if amount.to_i == 0 && locale == :ru
+      parts << locale_data['0'] << integrals[-1]
+    end
+
     unless amount.to_i == 0
       if integrals_as_number
         parts << format_integral(amount.to_i, options) << choose_plural(amount.to_i, integrals)
